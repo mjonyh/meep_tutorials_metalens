@@ -1,0 +1,32 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# SLURM logs
+slurm-*.out
+slurm-*.err
+
+# Simulation runtime outputs (verified references go in expected_figs/)
+outputs/
+**/outputs/
+
+# HDF5 dumps
+*.h5
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Tool & editor scratch
+.opencode/
+.ruff_cache/
+.vscode/
+.idea/
+*.swp
+*~
+
+# Environment variables & secrets
+.env
+.env.*

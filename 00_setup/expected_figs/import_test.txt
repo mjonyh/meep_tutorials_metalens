@@ -1,0 +1,19 @@
+# 00_setup import test — verified transcript (Job 1013)
+
+Source: `slurm-1013.out` (raw log archived to `/tmp/opencode/repo_archive_2026-09-17/00_setup/`).
+Command: `sbatch scaling_template.sbatch` from `00_setup/` (4 tasks, ~1 min walltime).
+4 identical rank blocks, one per rank:
+
+```text
+Using MPI version 3.1, 1 processes
+meep version: 1.28.0
+PASS: import meep 1.28.x OK
+
+Elapsed run time = 0.0002 s
+```
+
+Gate: `import meep` 1.28.0 PASS on 4/4 ranks.
+MPI note: each rank printed `1 processes` (4 serial replicas under plain `srun`);
+true 4-way decomposition verified later via `srun --mpi=pmix` (diag Job 1090,
+`4 processes` in Jobs 1092+; scaling table Jobs 1171/1172/1173 in
+`01_foundations/expected_figs/scaling.csv`).
