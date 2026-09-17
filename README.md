@@ -32,13 +32,71 @@ Full procedure: `SETUP_HPC.md`. Schedule and exit tickets: `COURSE_SYLLABUS.md`.
 ## 4. Repo layout
 
 ```text
-00_setup/ 01_foundations/ 02_sparams/ 03_phc/ 04_plasmonics/ 05_metalens/
-  sim_*.py | *.sbatch | lesson.md | expected_figs/ | solutions/ | fallback_data/ (05 only)
-common/ plot_utils.py materials.py slurm_header.snippet
-capstone/ briefs.md rubric.md proposal_template.md
-instructor/ timing.md troubleshooting.md grading_exit_tickets.md
-scripts/ test_repo.sh
-README.md COURSE_SYLLABUS.md SETUP_HPC.md MASTER_PLAN.md AGENTS.md TEST_STATUS.md
+meep_tutorial/
+├── 00_setup/                   # Module 0: Cluster environment & MEEP validation
+│   ├── env_check.sh            # Shell environment check
+│   ├── load_meep.sh            # Pinned Lmod module loader
+│   ├── test_meep.py            # PyMeep import & version verification
+│   ├── scaling_template.sbatch # Slurm 4-task MPI test template
+│   ├── expected_figs/          # Verified run transcripts (Job 1013)
+│   └── lesson.md               # Lesson & verification guide
+├── 01_foundations/             # Module 1: FDTD foundations, CFL, Fabry-Perot
+│   ├── sim_01_vacuum.py/.sbatch# 1D pulse propagation & PML echo test
+│   ├── sim_02_fabry.py/.sbatch # Dielectric slab Fabry-Perot fringes
+│   ├── expected_figs/          # Verified reference CSVs & PNGs
+│   ├── solutions/              # Resolution sweep stretch solution
+│   └── lesson.md
+├── 02_sparams/                 # Module 2: S-parameters, Bragg, Grating, Eff-medium
+│   ├── sim_03_bragg.py/.sbatch # 8-bilayer Si/SiO2 DBR stopband
+│   ├── sim_04_grating.py/.sbatch # 1D diffraction grating efficiency
+│   ├── sim_05_effmedium.py/.sbatch # Homogenization breakdown scan
+│   ├── expected_figs/
+│   ├── solutions/              # Effective medium TMM comparison
+│   └── lesson.md
+├── 03_phc/                     # Module 3: Photonic crystals, bands, W1, L3 cavity
+│   ├── sim_06_band.py/.sbatch  # TM band structure Γ-X-M-Γ via Harminv
+│   ├── sim_08_w1.py/.sbatch    # W1 defect waveguide transmission
+│   ├── sim_08_cavity.py/.sbatch# L3 cavity Q factor & field pattern
+│   ├── expected_figs/
+│   ├── solutions/              # W1 fine frequency probe solution
+│   └── lesson.md
+├── 04_plasmonics/              # Module 4: Dispersive metals, Mie scattering, Absorber
+│   ├── sim_09_mie.py/.sbatch   # Au nanowire 2D Mie scattering
+│   ├── sim_10_slit.py/.sbatch  # Ag subwavelength slit transmission
+│   ├── sim_11_absorber.py/.sbatch # MIM perfect absorber (>90%)
+│   ├── diag_mie_analytic.py    # Analytic Mie series generator
+│   ├── expected_figs/
+│   ├── solutions/              # Mie resolution convergence analysis
+│   └── lesson.md
+├── 05_metalens/                # Module 5: Metasurface library, deflector, metalens
+│   ├── sim_12_library.py/.sbatch # Meta-atom pillar library (0-2π phase)
+│   ├── sim_13_deflector.py/.sbatch # Anomalous beam deflector (Snell's law)
+│   ├── sim_14_metalens.py/.sbatch # 2D cylindrical metalens focusing
+│   ├── fallback_data/          # Precomputed focal dataset for slow queues
+│   ├── expected_figs/
+│   ├── solutions/              # Phase-to-pillar synthesizer
+│   └── lesson.md
+├── capstone/                   # Research capstone project materials
+│   ├── briefs.md               # Capstone project track briefs
+│   ├── proposal_template.md    # 1-page proposal scaffold
+│   └── rubric.md               # 100-pt evidence-based grading rubric
+├── common/                     # Shared module infrastructure
+│   ├── materials.py            # Vetted Drude-Lorentz & dielectric fits
+│   ├── plot_utils.py           # Standardized Matplotlib spectrum styling
+│   └── slurm_header.snippet    # Canonical Slurm batch header template
+├── instructor/                 # Instructor resources
+│   ├── grading_exit_tickets.md # Module-by-module exit ticket solutions
+│   ├── timing.md               # Lab pacing & queue staggering schedule
+│   └── troubleshooting.md      # 16 documented HPC failure signatures & fixes
+├── scripts/                    # Automation & verification scripts
+│   └── test_repo.sh            # Repo smoke test (syntax, batch, tree hygiene)
+├── AGENTS.md                   # Operational constraints & standards
+├── COURSE_SYLLABUS.md          # 15 h workshop syllabus & lecture plan
+├── LICENSE                     # MIT License
+├── MASTER_PLAN.md              # Workshop technical architecture & pedagogy
+├── README.md                   # Repository entry point & quickstart
+├── SETUP_HPC.md                # Cluster environment setup instructions
+└── TEST_STATUS.md              # Real-hardware verification records & logs
 ```
 
 Scratch, queue logs, HDF5 dumps: `/tmp/opencode/`, never committed. Never commit `slurm-*.out`, `*.h5`, `__pycache__`, venv paths, tokens, `.env`.
