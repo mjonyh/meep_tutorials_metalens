@@ -18,7 +18,7 @@
 Partition : compute (2 nodes, 12 CPU/node, ~63 GB) | SLURM 26.05.2
 Meep      : /opt/hpc/software/meep/1.28.0 | modulefile /opt/hpc/modules/Core/meep/1.28.0.lua
 Load chain: gcc/12.4 openmpi/5.0.10 openblas/0.3.34 fftw/3.3.11 hdf5/1.14.6 python/3.11.9 + meep/1.28.0
-Run       : srun python3 sim.py | srun -n 4 python3 sim.py
+Run       : srun python3 sim.py | srun --mpi=pmix -n 4 python3 sim.py
 Python    : .../1.28.0/venv/bin/python + PYTHONPATH=.../lib/python3.11/site-packages
 ```
 
@@ -34,6 +34,7 @@ Python    : .../1.28.0/venv/bin/python + PYTHONPATH=.../lib/python3.11/site-pack
 common/ plot_utils.py materials.py slurm_header.snippet
 capstone/ briefs.md rubric.md proposal_template.md
 instructor/ timing.md troubleshooting.md grading_exit_tickets.md
+scripts/ test_repo.sh
 README.md COURSE_SYLLABUS.md SETUP_HPC.md MASTER_PLAN.md AGENTS.md
 ```
 
@@ -56,7 +57,7 @@ README.md COURSE_SYLLABUS.md SETUP_HPC.md MASTER_PLAN.md AGENTS.md
 - Header docstring in every `sim_*.py` (required):
   ```python
   """<lab name> | Objective: <1 line> | Outcome: <artifact + gate>
-  Run: module load <chain> && srun -n 4 python3 <file> [--resolution R]
+  Run: module load <chain> && srun --mpi=pmix -n 4 python3 <file> [--resolution R]
   Saves: outputs/*.csv, outputs/*.png | Walltime: <measured, e.g. ~6 min on 4 cores>
   """
   ```
@@ -77,7 +78,7 @@ README.md COURSE_SYLLABUS.md SETUP_HPC.md MASTER_PLAN.md AGENTS.md
 #SBATCH --output=slurm-%j.out --error=slurm-%j.err
 module purge
 module load gcc/12.4 openmpi/5.0.10 openblas/0.3.34 fftw/3.3.11 hdf5/1.14.6 python/3.11.9 meep/1.28.0
-srun -n 4 python3 sim_XX.py --resolution 30
+srun --mpi=pmix -n 4 python3 sim_XX.py --resolution 30
 ```
 
 - One `.sbatch` per simulation. Time limit = measured walltime + 50% headroom, max 30 min (except 14).

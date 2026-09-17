@@ -82,7 +82,7 @@ def main():
         fig, ax = plt.subplots()
         ax.plot(periods, Ts, "o-")
         ax.axvline(1.55 / 5, ls="--", label="λ/5")
-        ax.set_title(f"homogenization breakdown (res={a.resolution}, UNTESTED)")
+        ax.set_title(f"homogenization breakdown (res={a.resolution})")
         ax.set_xlabel("period (um)")
         ax.set_ylabel("T")
         ax.legend()

@@ -78,7 +78,7 @@ def main():
 
         fig, ax = plt.subplots()
         ax.plot(1 / f, T, "o-")
-        ax.set_title(f"grating T spectrum (res={a.resolution}, UNTESTED)")
+        ax.set_title(f"grating T spectrum (res={a.resolution})")
         ax.set_xlabel("wavelength (um)")
         ax.set_ylabel("T")
         fig.savefig(os.path.join(a.outdir, "grating.png"))

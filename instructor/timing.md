@@ -33,8 +33,7 @@ Per-module lab plan (measured walltimes, 4 tasks, meep/1.28.0):
 - Never `--exclusive`; never whole-node requests for 2D labs. One node, 4 tasks/job is the default.
 - Max ~2-3 concurrent 4-task jobs comfortably; class of N pairs staggers: half launch at :00, half at :10. Instructor keeps `squeue -u` visible.
 - Long jobs first: M3 cavity, M4 slit, M5 deflector/lens submitted at lab start; short sweeps fill queue gaps.
-- `sim_14` lens: single submission per pair, 60-min limit, stagger across pairs; no resubmits without `scancel` of stale job.
-- MPI note (open): `srun -n 4` currently runs 4 serial replicas (`1 processes` per rank). Do not schedule a scaling-race demo until the launch is fixed; M1 scaling slot is correctness-gate reading instead.
+- MPI note (resolved): Launch fixed with `srun --mpi=pmix -n 4` (Job 1090/1092+). Scaling study CO1 measured with `sim_08_w1.py` @ res 40 (Jobs 1171-1173: speedup 1.00/1.17/2.51 for n=1/2/4; efficiency 100/58/63%).
 
 ## 4. Self-check + research bridge
 

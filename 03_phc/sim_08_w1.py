@@ -91,7 +91,7 @@ def main():
 
         fig, ax = plt.subplots()
         ax.plot(freqs, 10 * np.log10(np.maximum(Ts, 1e-6)), "o-")
-        ax.set_title(f"W1 T (res={a.resolution}, UNTESTED)")
+        ax.set_title(f"W1 T (res={a.resolution})")
         ax.set_xlabel("freq (c/a)")
         ax.set_ylabel("T (dB, normalized)")
         fig.savefig(os.path.join(a.outdir, "w1.png"))

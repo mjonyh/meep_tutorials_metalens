@@ -3,8 +3,9 @@
 import os
 import sys
 
-sys.path.insert(0, "/home/mjonyh/meep_tutorial/04_plasmonics")
-sys.path.insert(0, "/home/mjonyh/meep_tutorial/common")
+pkg_dir = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, pkg_dir)
+sys.path.insert(0, os.path.join(pkg_dir, "..", "common"))
 import numpy as np
 
 import meep as mp

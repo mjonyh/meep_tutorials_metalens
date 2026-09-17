@@ -107,7 +107,7 @@ def main():
         ax.set_xticks(xpos, xticks)
         for xp in xpos:
             ax.axvline(xp, color="k", lw=0.5)
-        ax.set_title(f"square-lattice rods TM bands (res={a.resolution}, UNTESTED)")
+        ax.set_title(f"square-lattice rods TM bands (res={a.resolution})")
         ax.set_xlabel("k-path G-X-M-G")
         ax.set_ylabel("freq (c/a)")
         fig.savefig(os.path.join(a.outdir, "bands.png"))

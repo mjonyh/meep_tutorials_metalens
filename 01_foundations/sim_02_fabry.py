@@ -77,7 +77,7 @@ def main():
             1 / f,
             R,
             T,
-            f"Si slab R/T (res={a.resolution}, UNTESTED)",
+            f"Si slab R/T (res={a.resolution})",
             os.path.join(a.outdir, "fabry.png"),
         )
         print(f"max|R+T-1| off-res check: {np.max(np.abs(R + T - 1)):.3f} (gate ≤0.02)")

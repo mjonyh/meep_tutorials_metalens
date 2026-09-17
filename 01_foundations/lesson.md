@@ -38,8 +38,8 @@ Reproduce locally from this directory:
 
 ```bash
 module purge && module load gcc/12.4 openmpi/5.0.10 openblas/0.3.34 fftw/3.3.11 hdf5/1.14.6 python/3.11.9 meep/1.28.0
-srun -n 4 python3 sim_01_vacuum.py --resolution 30
-srun -n 4 python3 sim_02_fabry.py --resolution 30
+srun --mpi=pmix -n 4 python3 sim_01_vacuum.py --resolution 30
+srun --mpi=pmix -n 4 python3 sim_02_fabry.py --resolution 30
 ```
 
 | File | SBATCH | Defaults |
@@ -97,7 +97,7 @@ Figure: `expected_figs/fabry.png` — Si-slab R/T vs wavelength, res 30, 4 tasks
 Run the documented convergence task before claiming a number is publishable:
 
 ```bash
-for R in 20 30 40 60; do srun -n 4 python3 sim_02_fabry.py --resolution $R --outdir outputs/res$R; done
+for R in 20 30 40 60; do srun --mpi=pmix -n 4 python3 sim_02_fabry.py --resolution $R --outdir outputs/res$R; done
 ```
 
 Record per resolution: `max|R+T-1|`, fringe-peak frequency, walltime. Expect the energy error flat at `~0.000` (already converged at 30) and cost rising with R. Keep the table; Module 4 repeats this discipline where under-resolution moves peaks.

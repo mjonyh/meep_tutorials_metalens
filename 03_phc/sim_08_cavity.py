@@ -86,7 +86,7 @@ def main():
 
         fig = plt.figure()
         sim2.plot2D(ax=plt.gca(), fields=mp.Ez)
-        plt.title(f"L3 mode Ez at f={f0:.4f} (res={a.resolution}, UNTESTED)")
+        plt.title(f"L3 mode Ez at f={f0:.4f} (res={a.resolution})")
         fig.savefig(os.path.join(a.outdir, "Ez.png"))
         plt.close(fig)
         print(f"modes={modes} (gate: Harminv converges)")

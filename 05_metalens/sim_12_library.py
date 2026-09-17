@@ -4,8 +4,12 @@ Run: module load <chain> && srun --mpi=pmix -n 4 python3 sim_12_library.py [--re
 
 import argparse
 import os
+import sys
 
 import numpy as np
+
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "common"))
+from materials import si_nir, sio2
 
 # H=1.4 gives 6.38 rad coverage with T>=0.25 (height scan 2026-09-16:
 # H=0.9/1.1/1.3 cover 3.88/4.94/5.77 rad -- insufficient; H=1.5 covers 6.67
@@ -22,7 +26,7 @@ def substrate():
         mp.Block(
             mp.Vector3(mp.inf, 0.5, mp.inf),
             center=mp.Vector3(0, -1.2, 0),
-            material=mp.Medium(epsilon=2.1025),
+            material=sio2(),
         )
     ]
 
@@ -65,7 +69,7 @@ def cell_response(resolution, diameter):
             height=H_PILLAR,
             axis=mp.Vector3(0, 1, 0),
             center=mp.Vector3(0, -0.95 + H_PILLAR / 2, 0),  # sits on substrate top
-            material=mp.Medium(epsilon=11.7),
+            material=si_nir(),
         )
     ]
     return transmitted(resolution, geo)

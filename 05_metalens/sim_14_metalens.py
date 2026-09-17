@@ -4,8 +4,12 @@ Run: module load <chain> && srun --mpi=pmix -n 4 python3 sim_14_metalens.py [--r
 
 import argparse
 import os
+import sys
 
 import numpy as np
+
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "common"))
+from materials import si_nir, sio2
 
 LAM, F_LEN, WIDTH, PERIOD = 1.55, 6.0, 20.0, 0.7
 H_PILLAR = 1.4  # same meta-atom as sim_12 library
@@ -35,7 +39,7 @@ def build_geometry():
         mp.Block(
             mp.Vector3(mp.inf, 0.5, mp.inf),
             center=mp.Vector3(0, -2.0, 0),
-            material=mp.Medium(epsilon=2.1025),
+            material=sio2(),
         )
     ]
     for x, p in zip(xs, phi):
@@ -46,7 +50,7 @@ def build_geometry():
                 height=H_PILLAR,
                 axis=mp.Vector3(0, 1, 0),
                 center=mp.Vector3(float(x), -1.75 + H_PILLAR / 2, 0),
-                material=mp.Medium(epsilon=11.7),
+                material=si_nir(),
             )
         )
     return geo
@@ -149,7 +153,7 @@ def main():
         ax1.set_xlabel("y (um)")
         ax1.legend()
         ax2.plot(xs, trans)
-        ax2.set_title(f"focal cut: FWHM={fw:.2f}um vs λ/2NA={dl:.2f}um (UNTESTED)")
+        ax2.set_title(f"focal cut: FWHM={fw:.2f}um vs λ/2NA={dl:.2f}um")
         ax2.set_xlabel("x (um)")
         ax2.set_ylabel("|E|^2")
         fig.savefig(os.path.join(a.outdir, "focal-cut.png"))

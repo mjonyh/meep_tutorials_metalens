@@ -89,7 +89,7 @@ def main():
             1 / f,
             R,
             T,
-            f"Bragg 8-bilayer (res={a.resolution}, UNTESTED)",
+            f"Bragg 8-bilayer (res={a.resolution})",
             os.path.join(a.outdir, "bragg.png"),
         )
         print(f"peak R={R.max():.3f} (gate >0.95)")

@@ -4,8 +4,12 @@ Run: module load <chain> && srun --mpi=pmix -n 4 python3 sim_13_deflector.py [--
 
 import argparse
 import os
+import sys
 
 import numpy as np
+
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "common"))
+from materials import si_nir, sio2
 
 PERIOD, N, LAM = 0.7, 8, 1.55
 H_PILLAR = 1.4  # same meta-atom as sim_12 library (H=0.9 covers only 3.4 rad)
@@ -32,7 +36,7 @@ def main():
         mp.Block(
             mp.Vector3(mp.inf, 0.5, mp.inf),
             center=mp.Vector3(0, -1.2, 0),
-            material=mp.Medium(epsilon=2.1025),
+            material=sio2(),
         )
     ]
     for i in range(N):  # picked 0..2π library entries (see DIAMETERS)
@@ -45,7 +49,7 @@ def main():
                 center=mp.Vector3(
                     -super_p / 2 + (i + 0.5) * PERIOD, -0.95 + H_PILLAR / 2, 0
                 ),
-                material=mp.Medium(epsilon=11.7),
+                material=si_nir(),
             )
         )
     src = [
@@ -109,7 +113,7 @@ def main():
         ax.plot(kx / k0, np.abs(spec) ** 2, "o-", ms=3)
         ax.axvline(np.sin(theory), ls="--", label="theory")
         ax.axvline(np.sin(theta_meas), ls=":", label="measured")
-        ax.set_title(f"deflector orders (res={a.resolution}, UNTESTED)")
+        ax.set_title(f"deflector orders (res={a.resolution})")
         ax.set_xlabel("kx/k0 (= sin θ)")
         ax.set_ylabel("intensity (arb)")
         ax.legend()

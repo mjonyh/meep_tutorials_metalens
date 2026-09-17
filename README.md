@@ -37,6 +37,7 @@ Full procedure: `SETUP_HPC.md`. Schedule and exit tickets: `COURSE_SYLLABUS.md`.
 common/ plot_utils.py materials.py slurm_header.snippet
 capstone/ briefs.md rubric.md proposal_template.md
 instructor/ timing.md troubleshooting.md grading_exit_tickets.md
+scripts/ test_repo.sh
 README.md COURSE_SYLLABUS.md SETUP_HPC.md MASTER_PLAN.md AGENTS.md TEST_STATUS.md
 ```
 

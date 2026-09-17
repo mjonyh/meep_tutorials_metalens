@@ -1,6 +1,6 @@
 """00_setup import test | Objective: verify PyMeep import + version | Outcome: prints version or FAILs loudly.
 Run: module load <chain> && srun python3 test_meep.py
-Saves: nothing | Walltime: <1 min (UNTESTED — bindings missing 2026-09-16) | Status: BLOCKED
+Saves: outputs in 00_setup/expected_figs/ | Walltime: <1 min (Job 1013, 4 ranks PASS) | Status: GREEN
 """
 
 import sys

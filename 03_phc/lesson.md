@@ -22,8 +22,10 @@ Prerequisites: Module 1–2 (`sbatch`, `add_flux`, R/T normalization). Walltime 
 | Lab | Script | Batch | Default resolution |
 |-----|--------|-------|--------------------|
 | Bands (Lab 06) | `sim_06_band.py` | `sim_06_band.sbatch` | 24 px/a |
-| W1 (Lab 08-W1) | `sim_08_w1.py` | `sim_08_w1.sbatch` | 20 px/a |
-| L3 cavity (Lab 08-cav) | `sim_08_cavity.py` | `sim_08_cavity.sbatch` | 24 px/a |
+| W1 waveguide (Lab 07 / defect 1) | `sim_08_w1.py` | `sim_08_w1.sbatch` | 20 px/a |
+| L3 cavity (Lab 08 / defect 2) | `sim_08_cavity.py` | `sim_08_cavity.sbatch` | 24 px/a |
+
+> Note on numbering: The two defect labs (W1 line defect and L3 point defect) share the `sim_08_*` prefix in the implementation (`sim_08_w1.py` and `sim_08_cavity.py`).
 
 Run (copy-paste; one batch per simulation; stagger launches — 2-node limit):
 
@@ -38,9 +40,9 @@ sbatch sim_08_cavity.sbatch  # Job 1034, 4 tasks, ~294 s/rank elapsed (~5 min)
 Direct (short test / login-node check only for syntax, not production):
 
 ```bash
-srun -n 4 python3 sim_06_band.py --resolution 24 --outdir outputs
-srun -n 4 python3 sim_08_w1.py --resolution 20 --outdir outputs
-srun -n 4 python3 sim_08_cavity.py --resolution 24 --outdir outputs
+srun --mpi=pmix -n 4 python3 sim_06_band.py --resolution 24 --outdir outputs
+srun --mpi=pmix -n 4 python3 sim_08_w1.py --resolution 20 --outdir outputs
+srun --mpi=pmix -n 4 python3 sim_08_cavity.py --resolution 24 --outdir outputs
 ```
 
 Check outputs:

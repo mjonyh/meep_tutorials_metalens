@@ -88,7 +88,7 @@ def main():
         ax.plot(times, tr2, lw=0.7, label="Ez(x=+2)")
         ax.axvline(t1, ls="--", label=f"t1={t1:.2f}")
         ax.axvline(t2, ls=":", label=f"t2={t2:.2f}")
-        ax.set_title(f"vacuum pulse (res={a.resolution}, UNTESTED)")
+        ax.set_title(f"vacuum pulse (res={a.resolution})")
         ax.set_xlabel("t (meep units, c=1)")
         ax.set_ylabel("Ez")
         ax.legend()
