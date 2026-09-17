@@ -2,7 +2,7 @@
 
 ## Mie Peak Resolution Convergence (`sol_mie_convergence.py`)
 
-The stretch goal in §3.3 of `04_plasmonics/lesson.md` examines the sensitivity of dispersive metal nanoparticles to spatial meshing.
+The stretch goal in §3.3 of `04_plasmonics/README.md` examines the sensitivity of dispersive metal nanoparticles to spatial meshing.
 
 ### Running
 

@@ -2,7 +2,7 @@
 
 ## Effective Medium Intermediate Period (`sol_effective_medium.py`)
 
-The stretch goal in §3.5 of `02_sparams/lesson.md` asks students to:
+The stretch goal in §3.5 of `02_sparams/README.md` asks students to:
 1. Probe an intermediate period of $\Lambda = 0.15\ \mu\text{m}$ ($\approx \lambda/10$).
 2. Compare the FDTD measured transmission with the theoretical transmission through a homogeneous dielectric slab having volume-averaged permittivity $\epsilon_{\text{eff}} = f \epsilon_{\text{Si}} + (1-f) \epsilon_{\text{SiO}_2}$.
 

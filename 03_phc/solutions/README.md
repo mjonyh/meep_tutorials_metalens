@@ -2,7 +2,7 @@
 
 ## W1 Frequency Notch Mapping (`sol_w1_freq_probe.py`)
 
-The stretch goal in §3.4 of `03_phc/lesson.md` asks students to probe intermediate frequencies, specifically $f = 0.33\ c/a$, to map the boundary between the deep in-gap defect state and the out-gap passbands.
+The stretch goal in §3.4 of `03_phc/README.md` asks students to probe intermediate frequencies, specifically $f = 0.33\ c/a$, to map the boundary between the deep in-gap defect state and the out-gap passbands.
 
 ### Running
 

@@ -7,7 +7,7 @@
 
 - Course: 15 h, 5×3 h, PhD/researcher level, 100% hands-on, broad sampler (Bragg/grating → PhC → plasmonics/Mie → metasurface/metalens).
 - Stack: PyMeep 1.28.0 (MPI, CPU-only) on SLURM `compute`. No laptop MEEP, no GPU MEEP, no unpinned versions.
-- Deliverables: runnable `.py` + `.sbatch` + `lesson.md` per lab, all tested on this cluster before documenting.
+- Deliverables: runnable `.py` + `.sbatch` + `README.md` per lab, all tested on this cluster before documenting.
 - Two hard rules:
   1. Every `.md` has **Objectives** + **Outcomes/Success Criteria** with numeric gates.
   2. **Test code first, write docs second.** Docs quote only verified JobID, walltime, figures.
@@ -30,7 +30,7 @@ Python    : .../1.28.0/venv/bin/python + PYTHONPATH=.../lib/python3.11/site-pack
 
 ```
 00_setup/ 01_foundations/ 02_sparams/ 03_phc/ 04_plasmonics/ 05_metalens/
-  sim_*.py | *.sbatch | lesson.md | expected_figs/ | solutions/ | fallback_data/ (05 only)
+  sim_*.py | *.sbatch | README.md | expected_figs/ | solutions/ | fallback_data/ (05 only)
 common/ plot_utils.py materials.py slurm_header.snippet
 capstone/ briefs.md rubric.md proposal_template.md
 instructor/ timing.md troubleshooting.md grading_exit_tickets.md
@@ -43,11 +43,11 @@ README.md COURSE_SYLLABUS.md SETUP_HPC.md MASTER_PLAN.md AGENTS.md
 
 ## 4. Test-first workflow (mandatory order per lab)
 
-1. Draft `sim_*.py` + `*.sbatch`. No `lesson.md` yet.
+1. Draft `sim_*.py` + `*.sbatch`. No `README.md` yet.
 2. `python3 -m py_compile sim.py` + `bash -n *.sh` + `sbatch --test-only` where possible.
 3. `sbatch *.sbatch` on `compute`. Record JobID, cores, walltime, `slurm-*.out`.
 4. Physics gate (§7). Fail → fix code, re-run. Never paper over with doc edits.
-5. Copy verified `*.csv/*.png` to `expected_figs/`. Write `lesson.md` quoting real numbers.
+5. Copy verified `*.csv/*.png` to `expected_figs/`. Write module `README.md` quoting real numbers.
 6. Clean-dir re-run using exactly the commands pasted in the doc. Fix drift immediately.
 
 `SETUP_HPC.md`, `README.md`, `COURSE_SYLLABUS.md` are written only after `00_setup/test_meep.py` passes.
@@ -111,7 +111,7 @@ Lesson footer (required):
 
 - [ ] `py_compile` + `bash -n` clean
 - [ ] `sbatch` PASS with JobID logged, outputs in `expected_figs/`
-- [ ] Physics gate met, numbers quoted in `lesson.md`
+- [ ] Physics gate met, numbers quoted in module `README.md`
 - [ ] Clean-dir re-run with doc commands reproduces artifacts
 - [ ] No secrets, no `*.h5`/`slurm-*.out` staged; `git status` clean except intended files
 

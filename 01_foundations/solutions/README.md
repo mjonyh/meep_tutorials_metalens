@@ -2,7 +2,7 @@
 
 ## Resolution Convergence Sweep (`sol_res_sweep.py`)
 
-The stretch goal in §3.4 of `01_foundations/lesson.md` asks students to execute a resolution sweep from 20 to 60 px/µm to confirm:
+The stretch goal in §3.4 of `01_foundations/README.md` asks students to execute a resolution sweep from 20 to 60 px/µm to confirm:
 1. Energy conservation error $\max |R + T - 1| \le 0.02$ holds across all grid sizes.
 2. The peak reflectance and fringe spacing converge smoothly without discretization artifacts.
 

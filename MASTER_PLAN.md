@@ -188,13 +188,13 @@ meep_tutorial/
   README.md + COURSE_SYLLABUS.md + SETUP_HPC.md   # written after 00_setup passes
   00_setup/ env_check.sh load_meep.sh test_meep.py scaling_template.sbatch
   01_foundations/ 02_sparams/ 03_phc/ 04_plasmonics/ 05_metalens/
-    sim_*.py *.sbatch lesson.md solutions/ expected_figs/ fallback_data/ (M5 only)
+    sim_*.py *.sbatch README.md solutions/ expected_figs/ fallback_data/ (M5 only)
   common/ plot_utils.py materials.py slurm_header.snippet
   capstone/ briefs.md rubric.md proposal_template.md
   instructor/ timing.md troubleshooting.md grading_exit_tickets.md
 ```
 
-Build sequence per module: draft code → compile check → `sbatch` on `compute` → collect `*.h5/*.csv/*.png + slurm-*.out` → physics gate (§7) → then write `lesson.md` quoting real JobID/walltime/figures → clean-dir re-run using pasted commands.
+Build sequence per module: draft code → compile check → `sbatch` on `compute` → collect `*.h5/*.csv/*.png + slurm-*.out` → physics gate (§7) → then write module `README.md` quoting real JobID/walltime/figures → clean-dir re-run using pasted commands.
 
 ---
 

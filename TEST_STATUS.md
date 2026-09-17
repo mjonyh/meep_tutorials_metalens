@@ -10,7 +10,7 @@
 - [x] NEGATIVE EXHIBIT (kept): same probe @ res 20 → 31/28 s (n=1/2, Jobs 1148/1149) but n=4
   (**Job 1150**) never finished one flux run in 00:15:00 (TIME_LIMIT cancel, node healthy,
   ranks ~99% CPU). Cause: 35k-cell grid split 4 ways = halo-sync overhead dominates.
-  Lesson recorded in `01_foundations/lesson.md` §3.5. NOTE: res20 campaign was submitted from
+  Lesson recorded in `01_foundations/README.md` §3.5. NOTE: res20 campaign was submitted from
   login-local `/tmp/opencode/scaling/` (node-local /tmp, NOT shared) — logs/CSVs stranded on
   node01/node02, retrieved via `srun --nodelist=... cat`. Res40 rerun used shared FS. Scratch rule learned.
 - [x] CLEAN-DIR RE-RUN **Job 1175** (doc commands verbatim, fresh dir `/home/mjonyh/opencode_scratch/cleanrun/lab/`):

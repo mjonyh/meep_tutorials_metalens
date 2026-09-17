@@ -39,27 +39,27 @@ meep_tutorial/
 │   ├── test_meep.py            # PyMeep import & version verification
 │   ├── scaling_template.sbatch # Slurm 4-task MPI test template
 │   ├── expected_figs/          # Verified run transcripts (Job 1013)
-│   └── lesson.md               # Lesson & verification guide
+│   └── README.md               # Lesson & verification guide
 ├── 01_foundations/             # Module 1: FDTD foundations, CFL, Fabry-Perot
 │   ├── sim_01_vacuum.py/.sbatch# 1D pulse propagation & PML echo test
 │   ├── sim_02_fabry.py/.sbatch # Dielectric slab Fabry-Perot fringes
 │   ├── expected_figs/          # Verified reference CSVs & PNGs
 │   ├── solutions/              # Resolution sweep stretch solution
-│   └── lesson.md
+│   └── README.md
 ├── 02_sparams/                 # Module 2: S-parameters, Bragg, Grating, Eff-medium
 │   ├── sim_03_bragg.py/.sbatch # 8-bilayer Si/SiO2 DBR stopband
 │   ├── sim_04_grating.py/.sbatch # 1D diffraction grating efficiency
 │   ├── sim_05_effmedium.py/.sbatch # Homogenization breakdown scan
 │   ├── expected_figs/
 │   ├── solutions/              # Effective medium TMM comparison
-│   └── lesson.md
+│   └── README.md
 ├── 03_phc/                     # Module 3: Photonic crystals, bands, W1, L3 cavity
 │   ├── sim_06_band.py/.sbatch  # TM band structure Γ-X-M-Γ via Harminv
 │   ├── sim_08_w1.py/.sbatch    # W1 defect waveguide transmission
 │   ├── sim_08_cavity.py/.sbatch# L3 cavity Q factor & field pattern
 │   ├── expected_figs/
 │   ├── solutions/              # W1 fine frequency probe solution
-│   └── lesson.md
+│   └── README.md
 ├── 04_plasmonics/              # Module 4: Dispersive metals, Mie scattering, Absorber
 │   ├── sim_09_mie.py/.sbatch   # Au nanowire 2D Mie scattering
 │   ├── sim_10_slit.py/.sbatch  # Ag subwavelength slit transmission
@@ -67,7 +67,7 @@ meep_tutorial/
 │   ├── diag_mie_analytic.py    # Analytic Mie series generator
 │   ├── expected_figs/
 │   ├── solutions/              # Mie resolution convergence analysis
-│   └── lesson.md
+│   └── README.md
 ├── 05_metalens/                # Module 5: Metasurface library, deflector, metalens
 │   ├── sim_12_library.py/.sbatch # Meta-atom pillar library (0-2π phase)
 │   ├── sim_13_deflector.py/.sbatch # Anomalous beam deflector (Snell's law)
@@ -75,7 +75,7 @@ meep_tutorial/
 │   ├── fallback_data/          # Precomputed focal dataset for slow queues
 │   ├── expected_figs/
 │   ├── solutions/              # Phase-to-pillar synthesizer
-│   └── lesson.md
+│   └── README.md
 ├── capstone/                   # Research capstone project materials
 │   ├── briefs.md               # Capstone project track briefs
 │   ├── proposal_template.md    # 1-page proposal scaffold
@@ -105,12 +105,12 @@ Scratch, queue logs, HDF5 dumps: `/tmp/opencode/`, never committed. Never commit
 
 | Module | Lesson | Status | Gate evidence (JobID) |
 |--------|--------|--------|-----------------------|
-| 00 setup / import | `00_setup/lesson.md` | GREEN | Job 1013: `import meep` 1.28.0 PASS 4/4 ranks, <1 s/rank. Historical MPI caveat (4x singletons) fixed 2026-09-17 via `--mpi=pmix` |
-| M1 FDTD + Fabry-Perot | `01_foundations/lesson.md` | GREEN | Job 1022: c_err=0.0011 (≤0.02), echo=0.0 (<0.01). Job 1023: max\|R+T-1\|=0.000 (≤0.02) |
-| M2 Bragg / grating / eff-medium | `02_sparams/lesson.md` | MARGINAL | Jobs 1024/1028/1026: Bragg peak R=1.003 (>0.95); median \|R+T-1\|=0.0037 PASS but 10/80 pts deviate to 0.096 at band-edge/short-λ; grating T=0.51–0.63; eff-medium collapse at λ/5 |
-| M3 bands / W1 / L3 cavity | `03_phc/lesson.md` | MARGINAL | Job 1030: gap bands 3–4 = 0.5698–0.5785 (1.5% mini-gap, NOT main TM gap — ±5% lit gate not claimed). Job 1031: W1 suppression ~40 dB (>10 dB PASS). Jobs 1033/1034: f=0.3076, Q=97.4, Harminv converges PASS |
-| M4 Mie / slit / absorber | `04_plasmonics/lesson.md` | GREEN | Mie Job 1146: 522→468→468 nm, analytic 470 nm, delta −2 nm PASS. Slit Job 1043: enhancement ~1.3x max, marginal. Absorber Job 1102: best A=0.902 at spacer=15nm/w=0.20 (gate >0.90 PASS, margin thin; 33.8% band-edge NaN by design) |
-| M5 library / deflector / metalens | `05_metalens/lesson.md` | GREEN | Job 1138: circular 6.20 rad (gap 0.088 rad, n=269 dense sweep; unwrapped ptp 9.23 NOT the metric). Job 1070: 16.1°=16.1° (±3° PASS), eff 0.87, ~12 min. Job 1071: focus y=5.80 (design 6.0), FWHM=0.625 vs λ/2NA=0.904, eff=0.420, ~23 min |
+| 00 setup / import | `00_setup/README.md` | GREEN | Job 1013: `import meep` 1.28.0 PASS 4/4 ranks, <1 s/rank. Historical MPI caveat (4x singletons) fixed 2026-09-17 via `--mpi=pmix` |
+| M1 FDTD + Fabry-Perot | `01_foundations/README.md` | GREEN | Job 1022: c_err=0.0011 (≤0.02), echo=0.0 (<0.01). Job 1023: max\|R+T-1\|=0.000 (≤0.02) |
+| M2 Bragg / grating / eff-medium | `02_sparams/README.md` | MARGINAL | Jobs 1024/1028/1026: Bragg peak R=1.003 (>0.95); median \|R+T-1\|=0.0037 PASS but 10/80 pts deviate to 0.096 at band-edge/short-λ; grating T=0.51–0.63; eff-medium collapse at λ/5 |
+| M3 bands / W1 / L3 cavity | `03_phc/README.md` | MARGINAL | Job 1030: gap bands 3–4 = 0.5698–0.5785 (1.5% mini-gap, NOT main TM gap — ±5% lit gate not claimed). Job 1031: W1 suppression ~40 dB (>10 dB PASS). Jobs 1033/1034: f=0.3076, Q=97.4, Harminv converges PASS |
+| M4 Mie / slit / absorber | `04_plasmonics/README.md` | GREEN | Mie Job 1146: 522→468→468 nm, analytic 470 nm, delta −2 nm PASS. Slit Job 1043: enhancement ~1.3x max, marginal. Absorber Job 1102: best A=0.902 at spacer=15nm/w=0.20 (gate >0.90 PASS, margin thin; 33.8% band-edge NaN by design) |
+| M5 library / deflector / metalens | `05_metalens/README.md` | GREEN | Job 1138: circular 6.20 rad (gap 0.088 rad, n=269 dense sweep; unwrapped ptp 9.23 NOT the metric). Job 1070: 16.1°=16.1° (±3° PASS), eff 0.87, ~12 min. Job 1071: focus y=5.80 (design 6.0), FWHM=0.625 vs λ/2NA=0.904, eff=0.420, ~23 min |
 
 Detail: `TEST_STATUS.md` (2026-09-17 update). Physics gates: `MASTER_PLAN.md` §7, `AGENTS.md` §7.
 
@@ -127,7 +127,7 @@ squeue -u $USER
 cat slurm-<jobid>.out      # expect 4x "meep version: 1.28.0" + 4x PASS
 ```
 
-Next: `01_foundations/lesson.md` (Jobs 1022/1023 commands), then M2→M5 in order. One `.sbatch` per simulation; stagger launches (2-node limit); never `--exclusive`.
+Next: `01_foundations/README.md` (Jobs 1022/1023 commands), then M2→M5 in order. One `.sbatch` per simulation; stagger launches (2-node limit); never `--exclusive`.
 
 ## 7. Self-check + research bridge
 
